@@ -18,7 +18,8 @@ const addOnePokemon = pokemon => ({
   type: ADD_ONE,
   pokemon
 });
-
+ 
+/* ----------------THUNK CREATOR----------------*/
 export const getPokemon = () => async dispatch => {
   const response = await fetch(`/api/pokemon`);
 
