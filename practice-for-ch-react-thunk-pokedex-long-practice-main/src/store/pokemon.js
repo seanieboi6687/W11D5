@@ -66,6 +66,25 @@ export const createPokemon = (createdPokemon) => async (dispatch) => {
   }
 };
 
+export const editPokemon = (editedPokemonNum) => async (dispatch) => {
+  const response = await fetch(`/api/pokemon/${editedPokemonNum.id}`, {
+    method: "PATCH",
+    body: JSON.stringify(editedPokemonNum),
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
+
+  if (response.ok) {
+    const result = await response.json();
+    dispatch(addOnePokemon(result));
+    return result;
+  } else {
+    // return error
+  }
+}
+
 const initialState = {
   list: [],
   types: [],
